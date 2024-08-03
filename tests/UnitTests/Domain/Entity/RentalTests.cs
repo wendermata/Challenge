@@ -13,7 +13,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Theory(DisplayName = nameof(ShouldInstantiate))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Rental")]
         [InlineData(PlanType.SevenDays)]
         [InlineData(PlanType.FifteenDays)]
         [InlineData(PlanType.ThirtyDays)]
@@ -44,7 +44,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldFinishRentalWithEarlyReturn))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Rental")]
         public void ShouldFinishRentalWithEarlyReturn()
         {
             //arrange
@@ -67,7 +67,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldFinishRentalWithLateReturn))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Rental")]
         public void ShouldFinishRentalWithLateReturn()
         {
             //arrange
@@ -90,7 +90,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldFinishRentalWithExpectedDate))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Rental")]
         public void ShouldFinishRentalWithExpectedDate()
         {
             //arrange

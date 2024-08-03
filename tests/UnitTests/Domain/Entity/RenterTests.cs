@@ -14,7 +14,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldInstantiate))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Renter")]
         public void ShouldInstantiate()
         {
             //arrange
@@ -42,7 +42,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldCanRentalReturnsFalse))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Renter")]
         public void ShouldCanRentalReturnsFalse()
         {
             //arrange
@@ -62,7 +62,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Theory(DisplayName = nameof(ShouldCanRentalReturnsTrue))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Renter")]
         [InlineData(LicenseType.A)]
         [InlineData(LicenseType.AB)]
         public void ShouldCanRentalReturnsTrue(LicenseType licenseType)
@@ -83,7 +83,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Theory(DisplayName = nameof(ShouldThrowExceptionWhenNameIsNullOrEmpty))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Renter")]
         [InlineData("")]
         [InlineData(null)]
         public void ShouldThrowExceptionWhenNameIsNullOrEmpty(string name) 
@@ -103,7 +103,7 @@ namespace UnitTests.Domain.Entity
 
 
         [Theory(DisplayName = nameof(ShouldThrowExceptionWhenDocumentIsNullOrEmpty))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Renter")]
         [InlineData("")]
         [InlineData(null)]
         public void ShouldThrowExceptionWhenDocumentIsNullOrEmpty(string document)
@@ -122,7 +122,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Theory(DisplayName = nameof(ShouldThrowExceptionWhenLicenseNumbertIsNullOrEmpty))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Renter")]
         [InlineData("")]
         [InlineData(null)]
         public void ShouldThrowExceptionWhenLicenseNumbertIsNullOrEmpty(string licenseNumber)

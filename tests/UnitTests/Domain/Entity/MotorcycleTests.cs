@@ -12,7 +12,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldInstantiate))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Motorcycle")]
         public void ShouldInstantiate()
         {
             //arrange
@@ -34,7 +34,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldThrowExceptionWhenYearIsInvalid))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Motorcycle")]
         public void ShouldThrowExceptionWhenYearIsInvalid()
         {
             //arrange
@@ -53,7 +53,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldThrowExceptionWhenPlateIsInvalid))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Motorcycle")]
         public void ShouldThrowExceptionWhenPlateIsInvalid()
         {
             //arrange
@@ -70,7 +70,7 @@ namespace UnitTests.Domain.Entity
         }
 
         [Fact(DisplayName = nameof(ShouldUpdatePlate))]
-        [Trait("Domain", "Category - Aggregates")]
+        [Trait("Domain", "Motorcycle")]
         public void ShouldUpdatePlate()
         {
             //arrange

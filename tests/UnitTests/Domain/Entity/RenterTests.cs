@@ -4,11 +4,11 @@ using Domain.Exceptions;
 
 namespace UnitTests.Domain.Entity
 {
-    public class DeliveryManTests
+    public class RenterTests
     {
         private readonly IFixture _fixture;
 
-        public DeliveryManTests()
+        public RenterTests()
         {
             _fixture = new Fixture();
         }
@@ -26,19 +26,19 @@ namespace UnitTests.Domain.Entity
             var licenseType = _fixture.Create<LicenseType>();
 
             //act
-            var deliveryMan = new DeliveryMan(id, name, document, birthDate, licenseNumber, licenseType);
+            var renter = new Renter(id, name, document, birthDate, licenseNumber, licenseType);
 
             //arrange
-            deliveryMan.Id.Should().Be(id);
-            deliveryMan.Name.Should().Be(name);
-            deliveryMan.Document.Should().Be(document);
-            deliveryMan.BirthDate.Should().Be(birthDate);
-            deliveryMan.LicenseNumber.Should().Be(licenseNumber);
-            deliveryMan.LicenseType.Should().Be(licenseType);
-            deliveryMan.CreatedAt.Date.Should().Be(DateTime.Now.Date);
+            renter.Id.Should().Be(id);
+            renter.Name.Should().Be(name);
+            renter.Document.Should().Be(document);
+            renter.BirthDate.Should().Be(birthDate);
+            renter.LicenseNumber.Should().Be(licenseNumber);
+            renter.LicenseType.Should().Be(licenseType);
+            renter.CreatedAt.Date.Should().Be(DateTime.Now.Date);
 
-            deliveryMan.LicenseImageUrl.Should().BeNull();
-            deliveryMan.UpdatedAt.Should().BeNull();
+            renter.LicenseImageUrl.Should().BeNull();
+            renter.UpdatedAt.Should().BeNull();
         }
 
         [Fact(DisplayName = nameof(ShouldCanRentalReturnsFalse))]
@@ -52,10 +52,10 @@ namespace UnitTests.Domain.Entity
             var licenseNumber = _fixture.Create<string>();
             var birthDate = _fixture.Create<DateTime>();
             var licenseType = LicenseType.B;
-            var deliveryMan = new DeliveryMan(id, name, document, birthDate, licenseNumber, licenseType);
+            var renter = new Renter(id, name, document, birthDate, licenseNumber, licenseType);
 
             //act
-            var result = deliveryMan.CanRental();
+            var result = renter.CanRental();
 
             //arrange
             result.Should().BeFalse();
@@ -73,10 +73,10 @@ namespace UnitTests.Domain.Entity
             var document = _fixture.Create<string>();
             var licenseNumber = _fixture.Create<string>();
             var birthDate = _fixture.Create<DateTime>();
-            var deliveryMan = new DeliveryMan(id, name, document, birthDate, licenseNumber, licenseType);
+            var renter = new Renter(id, name, document, birthDate, licenseNumber, licenseType);
 
             //act
-            var result = deliveryMan.CanRental();
+            var result = renter.CanRental();
 
             //arrange
             result.Should().BeTrue();
@@ -95,10 +95,10 @@ namespace UnitTests.Domain.Entity
             var birthDate = _fixture.Create<DateTime>();
 
             //act
-            Action action = () => { _ = new DeliveryMan(id, name, document, birthDate, licenseNumber, LicenseType.B); };
+            Action action = () => { _ = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.B); };
 
             //arrange
-            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(DeliveryMan.Name)} should not be null or empty");
+            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.Name)} should not be null or empty");
         }
 
 
@@ -115,10 +115,10 @@ namespace UnitTests.Domain.Entity
             var birthDate = _fixture.Create<DateTime>();
 
             //act
-            Action action = () => { _ = new DeliveryMan(id, name, document, birthDate, licenseNumber, LicenseType.B); };
+            Action action = () => { _ = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.B); };
 
             //arrange
-            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(DeliveryMan.Document)} should not be null or empty");
+            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.Document)} should not be null or empty");
         }
 
         [Theory(DisplayName = nameof(ShouldThrowExceptionWhenLicenseNumbertIsNullOrEmpty))]
@@ -134,10 +134,10 @@ namespace UnitTests.Domain.Entity
             var birthDate = _fixture.Create<DateTime>();
 
             //act
-            Action action = () => { _ = new DeliveryMan(id, name, document, birthDate, licenseNumber, LicenseType.B); };
+            Action action = () => { _ = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.B); };
 
             //arrange
-            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(DeliveryMan.LicenseNumber)} should not be null or empty");
+            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.LicenseNumber)} should not be null or empty");
         }
     }
 }

@@ -3,7 +3,7 @@ using Domain.Exceptions;
 
 namespace Domain.Entities
 {
-    public class DeliveryMan
+    public class Renter
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
@@ -16,7 +16,7 @@ namespace Domain.Entities
         public DateTime CreatedAt { get; private set; }
         public DateTime? UpdatedAt { get; private set; }
 
-        public DeliveryMan(Guid id,
+        public Renter(Guid id,
             string name,
             string document,
             DateTime birthDate,

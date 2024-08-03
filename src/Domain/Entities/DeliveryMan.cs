@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using Domain.Exceptions;
 
 namespace Domain.Entities
 {
@@ -35,6 +36,20 @@ namespace Domain.Entities
 
             CreatedAt = createdAt ?? DateTime.Now;
             UpdatedAt = updatedAt;
+
+            Validate();
+        }
+
+        public void Validate()
+        {
+            if (string.IsNullOrEmpty(Name))
+                throw new EntityValidationException($"{nameof(Name)} should not be null or empty");
+
+            if (string.IsNullOrEmpty(Document))
+                throw new EntityValidationException($"{nameof(Document)} should not be null or empty");
+
+            if (string.IsNullOrEmpty(LicenseNumber))
+                throw new EntityValidationException($"{nameof(LicenseNumber)} should not be null or empty");
         }
 
         public bool CanRental()

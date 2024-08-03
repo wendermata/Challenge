@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Enums;
+using Domain.Exceptions;
 
 namespace UnitTests.Domain.Entity
 {
@@ -79,6 +80,64 @@ namespace UnitTests.Domain.Entity
 
             //arrange
             result.Should().BeTrue();
+        }
+
+        [Theory(DisplayName = nameof(ShouldThrowExceptionWhenNameIsNullOrEmpty))]
+        [Trait("Domain", "Category - Aggregates")]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ShouldThrowExceptionWhenNameIsNullOrEmpty(string name) 
+        {
+            //arrange
+            var id = Guid.NewGuid();
+            var document = _fixture.Create<string>();
+            var licenseNumber = _fixture.Create<string>();
+            var birthDate = _fixture.Create<DateTime>();
+
+            //act
+            Action action = () => { _ = new DeliveryMan(id, name, document, birthDate, licenseNumber, LicenseType.B); };
+
+            //arrange
+            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(DeliveryMan.Name)} should not be null or empty");
+        }
+
+
+        [Theory(DisplayName = nameof(ShouldThrowExceptionWhenDocumentIsNullOrEmpty))]
+        [Trait("Domain", "Category - Aggregates")]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ShouldThrowExceptionWhenDocumentIsNullOrEmpty(string document)
+        {
+            //arrange
+            var id = Guid.NewGuid();
+            var name = _fixture.Create<string>();
+            var licenseNumber = _fixture.Create<string>();
+            var birthDate = _fixture.Create<DateTime>();
+
+            //act
+            Action action = () => { _ = new DeliveryMan(id, name, document, birthDate, licenseNumber, LicenseType.B); };
+
+            //arrange
+            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(DeliveryMan.Document)} should not be null or empty");
+        }
+
+        [Theory(DisplayName = nameof(ShouldThrowExceptionWhenLicenseNumbertIsNullOrEmpty))]
+        [Trait("Domain", "Category - Aggregates")]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ShouldThrowExceptionWhenLicenseNumbertIsNullOrEmpty(string licenseNumber)
+        {
+            //arrange
+            var id = Guid.NewGuid();
+            var name = _fixture.Create<string>();
+            var document = _fixture.Create<string>();
+            var birthDate = _fixture.Create<DateTime>();
+
+            //act
+            Action action = () => { _ = new DeliveryMan(id, name, document, birthDate, licenseNumber, LicenseType.B); };
+
+            //arrange
+            action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(DeliveryMan.LicenseNumber)} should not be null or empty");
         }
     }
 }

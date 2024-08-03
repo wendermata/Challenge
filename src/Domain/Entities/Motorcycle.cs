@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using Domain.Exceptions;
+
+namespace Domain.Entities
 {
     public class Motorcycle
     {
@@ -22,7 +24,25 @@
             Plate = plate;
             CreatedAt = createdAt ?? DateTime.Now;
             UpdatedAt = updatedAt;
+
+            Validate();
         }
 
+        public void Validate()
+        {
+            if (Year <= 1900 || Year >= 2100)
+                throw new EntityValidationException($"{nameof(Year)} should be a valid year");
+
+            if (Plate.Length != 7)
+                throw new EntityValidationException($"{nameof(Plate)} should have 7 characters");
+        }
+
+        public void UpdatePlate(string newPlate) 
+        {
+            Plate = newPlate;
+            UpdatedAt = DateTime.Now;
+
+            Validate();
+        }
     }
 }

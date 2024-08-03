@@ -28,7 +28,7 @@ namespace UnitTests.Domain.Entity
             //act
             var renter = new Renter(id, name, document, birthDate, licenseNumber, licenseType);
 
-            //arrange
+            //assert
             renter.Id.Should().Be(id);
             renter.Name.Should().Be(name);
             renter.Document.Should().Be(document);
@@ -57,7 +57,7 @@ namespace UnitTests.Domain.Entity
             //act
             var result = renter.CanRental();
 
-            //arrange
+            //assert
             result.Should().BeFalse();
         }
 
@@ -78,7 +78,7 @@ namespace UnitTests.Domain.Entity
             //act
             var result = renter.CanRental();
 
-            //arrange
+            //assert
             result.Should().BeTrue();
         }
 
@@ -97,7 +97,7 @@ namespace UnitTests.Domain.Entity
             //act
             Action action = () => { _ = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.B); };
 
-            //arrange
+            //assert
             action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.Name)} should not be null or empty");
         }
 
@@ -117,7 +117,7 @@ namespace UnitTests.Domain.Entity
             //act
             Action action = () => { _ = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.B); };
 
-            //arrange
+            //assert
             action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.Document)} should not be null or empty");
         }
 
@@ -136,7 +136,7 @@ namespace UnitTests.Domain.Entity
             //act
             Action action = () => { _ = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.B); };
 
-            //arrange
+            //assert
             action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.LicenseNumber)} should not be null or empty");
         }
     }

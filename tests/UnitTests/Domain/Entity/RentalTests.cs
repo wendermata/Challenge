@@ -30,7 +30,7 @@ namespace UnitTests.Domain.Entity
             //act
             var rental = new Rental(id, driverId, motorcycleId, planType, initialDate);
 
-            //arrange
+            //assert
             rental.Id.Should().Be(id);
             rental.DriverId.Should().Be(driverId);
             rental.PlanType.Should().Be(planType);
@@ -59,7 +59,7 @@ namespace UnitTests.Domain.Entity
             //act
             rental.FinishRental(devolutionDate);
 
-            //arrange
+            //assert
             rental.IsFinished.Should().BeTrue();
             rental.DevolutionDate.Value.Date.Should().Be(devolutionDate.Date);
             rental.UpdatedAt.Value.Date.Should().Be(DateTime.Now.Date);
@@ -82,7 +82,7 @@ namespace UnitTests.Domain.Entity
             //act
             rental.FinishRental(devolutionDate);
 
-            //arrange
+            //assert
             rental.IsFinished.Should().BeTrue();
             rental.DevolutionDate.Value.Date.Should().Be(devolutionDate.Date);
             rental.UpdatedAt.Value.Date.Should().Be(DateTime.Now.Date);
@@ -105,7 +105,7 @@ namespace UnitTests.Domain.Entity
             //act
             rental.FinishRental(devolutionDate);
 
-            //arrange
+            //assert
             rental.IsFinished.Should().BeTrue();
             rental.DevolutionDate.Value.Date.Should().Be(devolutionDate.Date);
             rental.DevolutionDate.Value.Date.Should().Be(rental.DevolutionDate.Value.Date);

@@ -24,10 +24,11 @@ namespace UnitTests.Domain.Entity
             //arrange
             var id = Guid.NewGuid();
             var driverId = Guid.NewGuid();
+            var motorcycleId = Guid.NewGuid();
             var initialDate = _fixture.Create<DateTime>();
 
             //act
-            var rental = new Rental(id, driverId, planType, initialDate);
+            var rental = new Rental(id, driverId, motorcycleId, planType, initialDate);
 
             //arrange
             rental.Id.Should().Be(id);
@@ -44,13 +45,15 @@ namespace UnitTests.Domain.Entity
 
         [Fact(DisplayName = nameof(ShouldFinishRentalWithEarlyReturn))]
         [Trait("Domain", "Category - Aggregates")]
-        public void ShouldFinishRentalWithEarlyReturn() 
+        public void ShouldFinishRentalWithEarlyReturn()
         {
             //arrange
             var id = Guid.NewGuid();
             var driverId = Guid.NewGuid();
+            var motorcycleId = Guid.NewGuid();
+
             var initialDate = DateTime.Now;
-            var rental = new Rental(id, driverId, PlanType.SevenDays, initialDate);
+            var rental = new Rental(id, driverId, motorcycleId, PlanType.SevenDays, initialDate);
             var devolutionDate = initialDate.AddDays(6);
 
             //act
@@ -70,8 +73,10 @@ namespace UnitTests.Domain.Entity
             //arrange
             var id = Guid.NewGuid();
             var driverId = Guid.NewGuid();
+            var motorcycleId = Guid.NewGuid();
+
             var initialDate = DateTime.Now;
-            var rental = new Rental(id, driverId, PlanType.FortyFiveDays, initialDate);
+            var rental = new Rental(id, driverId, motorcycleId, PlanType.FortyFiveDays, initialDate);
             var devolutionDate = initialDate.AddDays(46);
 
             //act
@@ -91,8 +96,10 @@ namespace UnitTests.Domain.Entity
             //arrange
             var id = Guid.NewGuid();
             var driverId = Guid.NewGuid();
+            var motorcycleId = Guid.NewGuid();
+
             var initialDate = DateTime.Now;
-            var rental = new Rental(id, driverId, PlanType.FifteenDays, initialDate);
+            var rental = new Rental(id, driverId, motorcycleId, PlanType.FifteenDays, initialDate);
             var devolutionDate = initialDate.AddDays(15);
 
             //act

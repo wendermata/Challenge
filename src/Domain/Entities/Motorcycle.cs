@@ -10,13 +10,15 @@ namespace Domain.Entities
         public string Plate { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime? UpdatedAt { get; private set; }
+        public bool IsActive { get; private set; }
 
-        public Motorcycle(Guid id, 
-            int year, 
-            string model, 
-            string plate, 
-            DateTime? createdAt = null, 
-            DateTime? updatedAt = null)
+        public Motorcycle(Guid id,
+            int year,
+            string model,
+            string plate,
+            DateTime? createdAt = null,
+            DateTime? updatedAt = null,
+            bool? isActive = null)
         {
             Id = id;
             Year = year;
@@ -24,6 +26,7 @@ namespace Domain.Entities
             Plate = plate;
             CreatedAt = createdAt ?? DateTime.Now;
             UpdatedAt = updatedAt;
+            IsActive = isActive ?? true;
 
             Validate();
         }
@@ -37,9 +40,17 @@ namespace Domain.Entities
                 throw new EntityValidationException($"{nameof(Plate)} should have 7 characters");
         }
 
-        public void UpdatePlate(string newPlate) 
+        public void UpdatePlate(string newPlate)
         {
             Plate = newPlate;
+            UpdatedAt = DateTime.Now;
+
+            Validate();
+        }
+
+        public void Delete()
+        {
+            IsActive = false;
             UpdatedAt = DateTime.Now;
 
             Validate();

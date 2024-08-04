@@ -1,5 +1,4 @@
-﻿using Application.Interfaces;
-using Application.UseCases.ListMotorcycles.Inputs;
+﻿using Application.UseCases.ListMotorcycles.Inputs;
 using Application.UseCases.ListMotorcycles.Mapping;
 using Application.UseCases.ListMotorcycles.Outputs;
 using Domain.Repository;
@@ -9,12 +8,10 @@ namespace Application.UseCases.ListMotorcycles
     public class ListMotorcyclesUseCase : IListMotorcyclesUseCase
     {
         private readonly IMotorcycleRepository _repository;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public ListMotorcyclesUseCase(IMotorcycleRepository repository, IUnitOfWork unitOfWork)
+        public ListMotorcyclesUseCase(IMotorcycleRepository repository)
         {
             _repository = repository;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<ListMotorcyclesOutput> Handle(ListMotorcyclesInput request, CancellationToken cancellationToken)

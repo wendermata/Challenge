@@ -29,7 +29,7 @@ namespace Application.UseCases.CreateMotorcycle
                     return output;
                 }
 
-                if (await _repository.ExistsMotorcycleAsync(domain.Plate, cancellationToken))
+                if (await _repository.CheckIfExistsAsync(domain.Plate, cancellationToken))
                 {
                     output.ErrorMessages.Add($"{domain.Plate} already registered in database");
                     return output;

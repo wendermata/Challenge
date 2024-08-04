@@ -52,7 +52,7 @@ namespace UnitTests.Application.UseCases.CreateMotorcycle
                 .With(x => x.Plate, _fixture.Create<string>()[..7])
                 .Create();
 
-            _motorcycleRepository.ExistsMotorcycleAsync(Arg.Is(input.Plate), Arg.Is(_cancellationToken)).Returns(true);
+            _motorcycleRepository.CheckIfExistsAsync(Arg.Is(input.Plate), Arg.Is(_cancellationToken)).Returns(true);
 
             //act
             var result = await _useCase.Handle(input, _cancellationToken);
@@ -91,7 +91,7 @@ namespace UnitTests.Application.UseCases.CreateMotorcycle
                 .With(x => x.Plate, _fixture.Create<string>().Substring(0, 7))
                 .Create();
 
-            _motorcycleRepository.ExistsMotorcycleAsync(Arg.Is(input.Plate), Arg.Is(_cancellationToken)).Returns(false);
+            _motorcycleRepository.CheckIfExistsAsync(Arg.Is(input.Plate), Arg.Is(_cancellationToken)).Returns(false);
 
             //act
             var result = await _useCase.Handle(input, _cancellationToken);

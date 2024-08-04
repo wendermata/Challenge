@@ -6,5 +6,6 @@ namespace Domain.Repository
     {
         Task<Motorcycle> GetMotorcycleAsync(Guid id, CancellationToken cancellationToken);
         Task<bool> ExistsMotorcycleAsync(string plate, CancellationToken cancellationToken);
+        Task<List<Motorcycle>> FilterByPlateAsync(string queryPlate, CancellationToken cancellationToken);
     }
 }

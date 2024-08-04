@@ -19,20 +19,21 @@ namespace Application.UseCases.ListMotorcycles
             var output = new ListMotorcyclesOutput();
             try
             {
-                if (request is null || string.IsNullOrEmpty(request.Plate))
+                if (request is null || string.IsNullOrEmpty(request.Search))
                 {
                     output.ErrorMessages.Add($"Invalid request: {request}");
                     return output;
                 }
 
-                var motorcyclesFound = await _repository.FilterByPlateAsync(request.Plate, cancellationToken);
-                if (motorcyclesFound is null)
+                var searchInput = request.MapToSearchInput();
+                var searchResult = await _repository.Search(searchInput, cancellationToken);
+                if (searchResult.Items is null)
                 {
-                    output.ErrorMessages.Add($"No plates founded with plate: {request.Plate}");
+                    output.ErrorMessages.Add($"No plates founded with plate: {request.Search}");
                     return output;
                 }
 
-                output = motorcyclesFound.MapToOutput();
+                output = searchResult.MapToOutput();
                 return output;
             }
             catch (Exception ex)

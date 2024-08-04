@@ -1,20 +1,23 @@
 ﻿using Application.UseCases.ListMotorcycles.Outputs;
 using Domain.Entities;
+using Domain.Repository.Shared.SearchableRepository;
 
 namespace Application.UseCases.ListMotorcycles.Mapping
 {
     public static class ListMotorcyclesOutputMapper
     {
-        public static ListMotorcyclesOutput MapToOutput(this List<Motorcycle> list)
+        public static ListMotorcyclesOutput MapToOutput(this SearchOutput<Motorcycle> search)
         {
-            var output = new ListMotorcyclesOutput();
-            if (list is null || list.Count == 0)
+            if (search is null || search.Items.Count == 0)
                 return null;
 
-            foreach (var motorcycle in list)
-                output.Motorcycles.Add(motorcycle.MapToItemOutput());
-
-            return output;
+            return new ListMotorcyclesOutput(search.CurrentPage,
+                search.PageSize,
+                search.Total,
+                search.Items
+                    .Select(x => x.MapToItemOutput())
+                    .ToList()
+            );
         }
 
         public static MotorcycleOutput MapToItemOutput(this Motorcycle motorcycle)

@@ -1,10 +1,21 @@
-﻿using Application.UseCases.ListMotorcycles.Outputs;
+﻿using Application.Common;
+using Application.UseCases.ListMotorcycles.Outputs;
+using Domain.Repository.Shared.SearchableRepository;
 using MediatR;
 
 namespace Application.UseCases.ListMotorcycles.Inputs
 {
-    public class ListMotorcyclesInput : IRequest<ListMotorcyclesOutput>
+    public class ListMotorcyclesInput : PaginatedListInput, IRequest<ListMotorcyclesOutput>
     {
-        public string Plate { get; set; }
+        public ListMotorcyclesInput(
+            int page = 1,
+            int pageSize = 15,
+            string search = "",
+            string sort = "",
+            SearchOrder dir = SearchOrder.Asc) : base(page, pageSize, search, sort, dir)
+        { }
+
+        public ListMotorcyclesInput() : base(1, 15, "", "", SearchOrder.Asc)
+        { }
     }
 }

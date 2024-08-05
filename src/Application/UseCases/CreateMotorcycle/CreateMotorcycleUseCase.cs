@@ -36,7 +36,7 @@ namespace Application.UseCases.CreateMotorcycle
                 }
 
                 await _repository.InsertAsync(domain, cancellationToken);
-                await _unitOfWork.CommitAsync(cancellationToken);
+                await _unitOfWork.Commit(cancellationToken);
 
                 output = domain.MapToOutput();
                 return output;

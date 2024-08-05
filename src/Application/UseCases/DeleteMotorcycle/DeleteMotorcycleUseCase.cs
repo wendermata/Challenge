@@ -41,7 +41,7 @@ namespace Application.UseCases.DeleteMotorcycle
 
                 motorcycle.Delete();
                 await _motorcycleRepository.UpdateAsync(motorcycle, cancellationToken);
-                await _unitOfWork.CommitAsync(cancellationToken);
+                await _unitOfWork.Commit(cancellationToken);
 
                 output.Messages.Add($"Motorcycle with Id: {request.Id} successfully deleted");
                 return output;

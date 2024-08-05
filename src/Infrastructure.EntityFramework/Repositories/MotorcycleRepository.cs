@@ -28,7 +28,7 @@ namespace Infrastructure.EntityFramework.Repositories
 
         public async Task<Motorcycle> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var motor = await _motorcycles.FindAsync(new object[] { id }, cancellationToken);
+            var motor = await _motorcycles.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
             NotFoundException.ThrowIfNull(motor, $"Motorcycle '{id}' not found.");
             return motor!;
         }

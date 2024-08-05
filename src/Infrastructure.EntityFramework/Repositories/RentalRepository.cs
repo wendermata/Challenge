@@ -23,7 +23,7 @@ namespace Infrastructure.EntityFramework.Repositories
 
         public async Task<Rental> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var rental = await _rentals.FindAsync(new object[] { id }, cancellationToken);
+            var rental = await _rentals.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
             NotFoundException.ThrowIfNull(rental, $"Rental '{id}' not found.");
             return rental!;
         }

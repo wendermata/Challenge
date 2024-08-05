@@ -30,7 +30,7 @@ namespace Application.UseCases.ModifyMotorcyclePlate
                 motorcycle.UpdatePlate(request.NewPlate);
 
                 await _repository.UpdateAsync(motorcycle, cancellationToken);
-                await _unitOfWork.CommitAsync(cancellationToken);
+                await _unitOfWork.Commit(cancellationToken);
                 output.Messages.Add($"Motorcycle with Id: {request.Id} successfully update plate with: {request.NewPlate}");
                 return output;
             }

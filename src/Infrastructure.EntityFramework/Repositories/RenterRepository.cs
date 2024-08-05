@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Exceptions;
+using Domain.Entities;
 using Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,13 @@ namespace Infrastructure.EntityFramework.Repositories
         public async Task UpdateAsync(Renter entity, CancellationToken cancellationToken)
         {
             _renters.Update(entity);
+        }
+
+        public async Task<Renter> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var renter = await _renters.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            NotFoundException.ThrowIfNull(renter, $"Renter '{id}' not found.");
+            return renter!;
         }
     }
 }

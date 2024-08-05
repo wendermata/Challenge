@@ -38,6 +38,11 @@ namespace Infrastructure.EntityFramework.Repositories
             await _motorcycles.AddAsync(entity, cancellationToken);
         }
 
+        public async Task UpdateAsync(Motorcycle entity, CancellationToken cancellationToken)
+        {
+            _motorcycles.Update(entity);
+        }
+
         public async Task<SearchOutput<Motorcycle>> Search(SearchInput input, CancellationToken cancellationToken)
         {
             var toSkip = (input.Page - 1) * input.PageSize;
@@ -71,11 +76,6 @@ namespace Infrastructure.EntityFramework.Repositories
             };
 
             return orderedQuery;
-        }
-
-        public async Task UpdateAsync(Motorcycle entity, CancellationToken cancellationToken)
-        {
-            _motorcycles.Update(entity);
         }
     }
 }

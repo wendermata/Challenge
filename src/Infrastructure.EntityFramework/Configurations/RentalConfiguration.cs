@@ -12,7 +12,7 @@ namespace Infrastructure.EntityFramework.Configurations
 
             builder.HasOne<Renter>()
                 .WithMany()
-                .HasForeignKey(x => x.DriverId)
+                .HasForeignKey(x => x.RenterId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne<Motorcycle>()

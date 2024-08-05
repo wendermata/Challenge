@@ -32,7 +32,7 @@ namespace UnitTests.Domain.Entity
 
             //assert
             rental.Id.Should().Be(id);
-            rental.DriverId.Should().Be(driverId);
+            rental.RenterId.Should().Be(driverId);
             rental.PlanType.Should().Be(planType);
             rental.InitialDate.Date.Should().Be(initialDate.AddDays(1).Date);
             rental.CreatedAt.Date.Should().Be(DateTime.Now.Date);

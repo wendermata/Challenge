@@ -5,7 +5,7 @@ namespace Domain.Entities
     public class Rental
     {
         public Guid Id { get; private set; }
-        public Guid DriverId { get; private set; }
+        public Guid RenterId { get; private set; }
         public Guid MotorcycleId { get; private set; }
         public PlanType PlanType { get; private set; }
         public DateTime InitialDate { get; private set; }
@@ -22,7 +22,7 @@ namespace Domain.Entities
 
 
         public Rental(Guid id,
-            Guid driverId,
+            Guid renterId,
             Guid motorcycleId,
             PlanType planType,
             DateTime initialDate,
@@ -33,7 +33,7 @@ namespace Domain.Entities
             DateTime? updatedAt = null)
         {
             Id = id;
-            DriverId = driverId;
+            RenterId = renterId;
             MotorcycleId = motorcycleId;
             PlanType = planType;
             InitialDate = initialDate.AddDays(1);

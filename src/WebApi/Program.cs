@@ -1,12 +1,22 @@
 using Application.Extensions;
 using Infrastructure.EntityFramework.Extensions;
+using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddUseCases()
+    .AddConections()
     .AddRepositories()
-    .AddControllers();
+    .AddConfigureControllers()
+    .AddUseCases()
+    .AddCors(p => p.AddPolicy("CORS",
+        builder =>
+        {
+            builder.WithOrigins("*")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        }));
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,7 +28,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
+app.UseCors("CORS");
 app.MapControllers();
 app.Run();

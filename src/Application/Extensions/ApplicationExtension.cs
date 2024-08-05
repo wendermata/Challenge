@@ -10,6 +10,8 @@ namespace Application.Extensions
     {
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(ApplicationExtension).Assembly));
+
             services.AddTransient<ICreateMotorcycleUseCase, CreateMotorcycleUseCase>();
             services.AddTransient<IDeleteMotorcycleUseCase, DeleteMotorcycleUseCase>();
             services.AddTransient<IModifyMotorcyclePlateUseCase, ModifyMotorcyclePlateUseCase>();

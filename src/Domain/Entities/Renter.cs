@@ -16,6 +16,7 @@ namespace Domain.Entities
         public DateTime CreatedAt { get; private set; }
         public DateTime? UpdatedAt { get; private set; }
 
+        public Renter() { }
         public Renter(Guid id,
             string name,
             string document,

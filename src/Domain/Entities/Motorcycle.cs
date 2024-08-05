@@ -10,8 +10,9 @@ namespace Domain.Entities
         public string Plate { get; private set; }
         public DateTime? CreatedAt { get; private set; }
         public DateTime? UpdatedAt { get; private set; }
-        public bool? IsActive { get; private set; }
+        public bool IsActive { get; private set; }
 
+        public Motorcycle() { }
         public Motorcycle(Guid id,
             int year,
             string model,

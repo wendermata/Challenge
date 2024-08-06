@@ -25,6 +25,12 @@ namespace Application.UseCases.DeleteMotorcycle
             var output = new Output();
             try
             {
+                if (request == null)
+                {
+                    output.ErrorMessages.Add($"Invalid request: {request}");
+                    return output;
+                }
+
                 var motorcycle = await _motorcycleRepository.GetByIdAsync(request.Id, cancellationToken);
                 if (motorcycle is null)
                 {
@@ -35,7 +41,7 @@ namespace Application.UseCases.DeleteMotorcycle
                 var rentals = await _rentalRepository.GetRentalsByMotorcycleId(request.Id, cancellationToken);
                 if (rentals.Count > 0) 
                 {
-                    output.ErrorMessages.Add($"Motorcycle with Id: {request.Id} can't be deleted because it's was already used in past rentals!");
+                    output.ErrorMessages.Add($"Motorcycle with Id: {request.Id} can't be deleted because it was already used in past rentals!");
                     return output;
                 }
 

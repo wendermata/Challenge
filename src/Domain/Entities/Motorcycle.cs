@@ -8,7 +8,7 @@ namespace Domain.Entities
         public int Year { get; private set; }
         public string Model { get; private set; }
         public string Plate { get; private set; }
-        public DateTime? CreatedAt { get; private set; }
+        public DateTime CreatedAt { get; private set; }
         public DateTime? UpdatedAt { get; private set; }
         public bool IsActive { get; private set; }
 

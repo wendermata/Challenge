@@ -42,7 +42,7 @@ namespace UnitTests.Application.UseCases.CreateMotorcycle.Mapping
             //assert
             output.Should().NotBeNull();
             output.IsValid.Should().BeTrue();
-            output.Messages.Should().Contain($"Motorcycle with plate {domain.Plate} was inserted successfully. Id: {domain.Id}");
+            output.Messages.Should().Contain($"Motorcycle with plate {domain.Plate} created successfully. Id: {domain.Id}");
         }
 
     }

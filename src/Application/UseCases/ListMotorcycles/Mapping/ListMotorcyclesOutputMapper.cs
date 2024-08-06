@@ -9,7 +9,7 @@ namespace Application.UseCases.ListMotorcycles.Mapping
         public static ListMotorcyclesOutput MapToOutput(this SearchOutput<Motorcycle> search)
         {
             if (search is null || search.Items.Count == 0)
-                return null;
+                return new ListMotorcyclesOutput();
 
             return new ListMotorcyclesOutput(search.CurrentPage,
                 search.PageSize,

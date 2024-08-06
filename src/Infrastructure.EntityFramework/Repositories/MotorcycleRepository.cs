@@ -51,7 +51,7 @@ namespace Infrastructure.EntityFramework.Repositories
             query = GetQuery(query, input.OrderBy, input.Order);
 
             if (!String.IsNullOrWhiteSpace(input.Search))
-                query = query.Where(x => x.Plate.Contains(input.Search));
+                query = query.Where(x => x.Plate.ToUpper().Contains(input.Search.ToUpper()));
 
             var list = await query.Skip(toSkip).Take(input.PageSize).ToListAsync(cancellationToken);
             var total = await query.CountAsync(cancellationToken);

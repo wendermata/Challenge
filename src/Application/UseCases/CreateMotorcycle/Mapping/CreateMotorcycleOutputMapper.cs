@@ -13,7 +13,7 @@ namespace Application.UseCases.CreateMotorcycle.Mapping
                 return null;
 
             output.MotorcycleId = domain.Id;
-            output.Messages.Add($"Motorcycle with plate {domain.Plate} was inserted successfully. Id: {domain.Id}");
+            output.Messages.Add($"Motorcycle with plate {domain.Plate} created successfully. Id: {domain.Id}");
 
             return output;
         }

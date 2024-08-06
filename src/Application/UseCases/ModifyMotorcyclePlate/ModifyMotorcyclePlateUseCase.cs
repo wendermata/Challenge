@@ -27,6 +27,13 @@ namespace Application.UseCases.ModifyMotorcyclePlate
                     output.ErrorMessages.Add($"Motorcycle with Id: {request.Id} not found!");
                     return output;
                 }
+
+                if (await _repository.CheckIfExistsAsync(request.NewPlate, cancellationToken))
+                {
+                    output.ErrorMessages.Add($"{request.NewPlate} already registered in database");
+                    return output;
+                }
+
                 motorcycle.UpdatePlate(request.NewPlate);
 
                 await _repository.UpdateAsync(motorcycle, cancellationToken);

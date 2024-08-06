@@ -9,7 +9,7 @@ namespace Infrastructure.EntityFramework.Configurations
         public void Configure(EntityTypeBuilder<Motorcycle> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasAlternateKey(x => x.Plate);
+            builder.HasIndex(x => x.Plate).IsUnique();
         }
     }
 }

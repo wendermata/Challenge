@@ -27,9 +27,9 @@ namespace Application.UseCases.ListMotorcycles
 
                 var searchInput = request.MapToSearchInput();
                 var searchResult = await _repository.Search(searchInput, cancellationToken);
-                if (searchResult.Items is null)
+                if (searchResult.Items.Count == 0)
                 {
-                    output.ErrorMessages.Add($"No plates founded with plate: {request.Search}");
+                    output.Messages.Add($"No plates founded with plate: {request.Search}");
                     return output;
                 }
 

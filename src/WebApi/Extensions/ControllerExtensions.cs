@@ -1,7 +1,10 @@
-﻿namespace WebApi.Extensions
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace WebApi.Extensions
 {
     public static class ControllerExtensions
     {
+        [ExcludeFromCodeCoverage]
         public static IServiceCollection AddConfigureControllers(this IServiceCollection services)
         {
             services.AddControllers();

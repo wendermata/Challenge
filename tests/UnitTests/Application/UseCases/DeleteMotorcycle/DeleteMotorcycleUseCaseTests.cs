@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces;
-using Application.UseCases.DeleteMotorcycle;
-using Application.UseCases.DeleteMotorcycle.Inputs;
+using Application.UseCases.Motorcycle.DeleteMotorcycle;
+using Application.UseCases.Motorcycle.DeleteMotorcycle.Inputs;
 using Domain.Entities;
 using Domain.Repository;
 

@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <Folder Include="UseCases\ReturnRentedMotorcycle\" />
-    <Folder Include="UseCases\UploadRenterLicenseImage\" />
+    <Folder Include="UseCases\Renter\UploadRenterLicenseImage\" />
   </ItemGroup>
 
 </Project>

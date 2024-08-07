@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces;
-using Application.UseCases.CreateMotorcycle;
-using Application.UseCases.CreateMotorcycle.Inputs;
+using Application.UseCases.Motorcycle.CreateMotorcycle;
+using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
 using Domain.Repository;
 
 namespace UnitTests.Application.UseCases.CreateMotorcycle

@@ -1,5 +1,5 @@
-﻿using Application.UseCases.CreateMotorcycle.Inputs;
-using Application.UseCases.CreateMotorcycle.Mapping;
+﻿using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
+using Application.UseCases.Motorcycle.CreateMotorcycle.Mapping;
 
 namespace UnitTests.Application.UseCases.CreateMotorcycle.Mapping
 {

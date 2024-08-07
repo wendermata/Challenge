@@ -1,6 +1,6 @@
 ﻿using Application.UseCases.DeleteMotorcycle.Inputs;
-using Application.UseCases.ListMotorcycles.Inputs;
-using Application.UseCases.ListMotorcycles.Mapping;
+using Application.UseCases.Motorcycle.ListMotorcycles.Inputs;
+using Application.UseCases.Motorcycle.ListMotorcycles.Mapping;
 using System.Threading;
 
 namespace UnitTests.Application.UseCases.ListMotorcycles.Mapping

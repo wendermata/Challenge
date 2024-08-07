@@ -1,7 +1,7 @@
-﻿using Application.UseCases.CreateMotorcycle;
-using Application.UseCases.DeleteMotorcycle;
-using Application.UseCases.ListMotorcycles;
-using Application.UseCases.ModifyMotorcyclePlate;
+﻿using Application.UseCases.Motorcycle.CreateMotorcycle;
+using Application.UseCases.Motorcycle.DeleteMotorcycle;
+using Application.UseCases.Motorcycle.ListMotorcycles;
+using Application.UseCases.Motorcycle.ModifyMotorcyclePlate;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Extensions

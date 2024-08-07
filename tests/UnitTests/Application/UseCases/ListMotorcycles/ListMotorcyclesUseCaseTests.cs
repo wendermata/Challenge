@@ -1,5 +1,5 @@
-﻿using Application.UseCases.ListMotorcycles;
-using Application.UseCases.ListMotorcycles.Inputs;
+﻿using Application.UseCases.Motorcycle.ListMotorcycles;
+using Application.UseCases.Motorcycle.ListMotorcycles.Inputs;
 using Domain.Entities;
 using Domain.Repository;
 using Domain.Repository.Shared.SearchableRepository;

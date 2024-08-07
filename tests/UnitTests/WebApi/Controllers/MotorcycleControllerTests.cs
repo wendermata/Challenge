@@ -1,10 +1,10 @@
 ﻿using Application.Common;
-using Application.UseCases.CreateMotorcycle.Inputs;
-using Application.UseCases.CreateMotorcycle.Outputs;
-using Application.UseCases.DeleteMotorcycle.Inputs;
-using Application.UseCases.ListMotorcycles.Inputs;
-using Application.UseCases.ListMotorcycles.Outputs;
-using Application.UseCases.ModifyMotorcyclePlate.Inputs;
+using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
+using Application.UseCases.Motorcycle.CreateMotorcycle.Outputs;
+using Application.UseCases.Motorcycle.DeleteMotorcycle.Inputs;
+using Application.UseCases.Motorcycle.ListMotorcycles.Inputs;
+using Application.UseCases.Motorcycle.ListMotorcycles.Outputs;
+using Application.UseCases.Motorcycle.ModifyMotorcyclePlate.Inputs;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

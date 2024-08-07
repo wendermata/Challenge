@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces;
-using Application.UseCases.ModifyMotorcyclePlate;
-using Application.UseCases.ModifyMotorcyclePlate.Inputs;
+using Application.UseCases.Motorcycle.ModifyMotorcyclePlate;
+using Application.UseCases.Motorcycle.ModifyMotorcyclePlate.Inputs;
 using Domain.Entities;
 using Domain.Repository;
 

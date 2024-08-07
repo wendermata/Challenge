@@ -1,6 +1,5 @@
-﻿using Application.UseCases.ListMotorcycles.Mapping;
+﻿using Application.UseCases.Motorcycle.ListMotorcycles.Mapping;
 using Application.UseCases.Motorcycle.ListMotorcycles.Inputs;
-using Application.UseCases.Motorcycle.ListMotorcycles.Mapping;
 using Application.UseCases.Motorcycle.ListMotorcycles.Outputs;
 using Domain.Repository;
 

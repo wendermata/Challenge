@@ -1,4 +1,4 @@
-﻿using Application.UseCases.ListMotorcycles.Mapping;
+﻿using Application.UseCases.Motorcycle.ListMotorcycles.Mapping;
 using Domain.Entities;
 using Domain.Repository.Shared.SearchableRepository;
 

@@ -1,11 +1,11 @@
 ﻿using Application.UseCases.Motorcycle.CreateMotorcycle.Outputs;
-using Domain.Entities;
+using DomainMotorcycle = Domain.Entities.Motorcycle;
 
 namespace Application.UseCases.Motorcycle.CreateMotorcycle.Mapping
 {
     public static class CreateMotorcycleOutputMapper
     {
-        public static CreateMotorcycleOutput MapToOutput(this Motorcycle domain)
+        public static CreateMotorcycleOutput MapToOutput(this DomainMotorcycle domain)
         {
             var output = new CreateMotorcycleOutput();
 

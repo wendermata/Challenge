@@ -1,12 +1,12 @@
 ﻿using Application.UseCases.Motorcycle.ListMotorcycles.Outputs;
-using Domain.Entities;
+using DomainMotorcycle = Domain.Entities.Motorcycle;
 using Domain.Repository.Shared.SearchableRepository;
 
 namespace Application.UseCases.Motorcycle.ListMotorcycles.Mapping
 {
     public static class ListMotorcyclesOutputMapper
     {
-        public static ListMotorcyclesOutput MapToOutput(this SearchOutput<Motorcycle> search)
+        public static ListMotorcyclesOutput MapToOutput(this SearchOutput<DomainMotorcycle> search)
         {
             if (search is null || search.Items.Count == 0)
                 return new ListMotorcyclesOutput();
@@ -20,7 +20,7 @@ namespace Application.UseCases.Motorcycle.ListMotorcycles.Mapping
             );
         }
 
-        public static MotorcycleOutput MapToItemOutput(this Motorcycle motorcycle)
+        public static MotorcycleOutput MapToItemOutput(this DomainMotorcycle motorcycle)
         {
             if (motorcycle is null)
                 return null;

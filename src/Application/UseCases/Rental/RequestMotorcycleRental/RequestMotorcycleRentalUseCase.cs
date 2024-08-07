@@ -26,7 +26,7 @@ namespace Application.UseCases.Rental.RequestMotorcycleRental
             try
             {
                 var renter = await _renterRepository.GetByIdAsync(request.RenterId, cancellationToken);
-                if (renter.CanRental() is false)
+                if (renter.CanRent() is false)
                 {
                     output.ErrorMessages.Add($"Renter {request.RenterId} can't rent motorcycle.");
                     return output;

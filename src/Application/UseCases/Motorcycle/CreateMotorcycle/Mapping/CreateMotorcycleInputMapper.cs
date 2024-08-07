@@ -1,16 +1,16 @@
 ﻿using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
-using Domain.Entities;
+using DomainMotorcycle = Domain.Entities.Motorcycle;
 
 namespace Application.UseCases.Motorcycle.CreateMotorcycle.Mapping
 {
     public static class CreateMotorcycleInputMapper
     {
-        public static Motorcycle MapToDomain(this CreateMotorcycleInput input)
+        public static DomainMotorcycle MapToDomain(this CreateMotorcycleInput input)
         {
             if (input == null)
                 return null;
 
-            return new Motorcycle(Guid.NewGuid(),
+            return new DomainMotorcycle(Guid.NewGuid(),
                 input.Year,
                 input.Model,
                 input.Plate);

@@ -1,16 +1,16 @@
 ﻿using Application.UseCases.Renter.CreateRenter.Inputs;
-using Domain.Entities;
+using DomainRenter = Domain.Entities.Renter;
 
 namespace Application.UseCases.Renter.CreateRenter.Mapping
 {
     public static class CreateRenterInputMapper
     {
-        public static Renter MapToDomain(this CreateRenterInput input)
+        public static DomainRenter MapToDomain(this CreateRenterInput input)
         {
             if (input is null)
                 return null;
 
-            return new Renter(Guid.NewGuid(),
+            return new DomainRenter(Guid.NewGuid(),
                 input.Name,
                 input.Document,
                 input.BirthDate,

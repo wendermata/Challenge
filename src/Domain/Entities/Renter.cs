@@ -53,7 +53,7 @@ namespace Domain.Entities
                 throw new EntityValidationException($"{nameof(LicenseNumber)} should not be null or empty");
         }
 
-        public bool CanRental()
+        public bool CanRent()
         {
             return LicenseType == LicenseType.A || LicenseType == LicenseType.AB;
         }

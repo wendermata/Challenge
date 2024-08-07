@@ -1,4 +1,4 @@
-﻿using Application.UseCases.CreateMotorcycle.Mapping;
+﻿using Application.UseCases.Motorcycle.CreateMotorcycle.Mapping;
 using Domain.Entities;
 
 namespace UnitTests.Application.UseCases.CreateMotorcycle.Mapping

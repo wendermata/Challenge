@@ -41,9 +41,9 @@ namespace UnitTests.Domain.Entity
             renter.UpdatedAt.Should().BeNull();
         }
 
-        [Fact(DisplayName = nameof(ShouldCanRentalReturnsFalse))]
+        [Fact(DisplayName = nameof(ShouldCanRentReturnsFalse))]
         [Trait("Domain", "Renter")]
-        public void ShouldCanRentalReturnsFalse()
+        public void ShouldCanRentReturnsFalse()
         {
             //arrange
             var id = Guid.NewGuid();
@@ -55,17 +55,17 @@ namespace UnitTests.Domain.Entity
             var renter = new Renter(id, name, document, birthDate, licenseNumber, licenseType);
 
             //act
-            var result = renter.CanRental();
+            var result = renter.CanRent();
 
             //assert
             result.Should().BeFalse();
         }
 
-        [Theory(DisplayName = nameof(ShouldCanRentalReturnsTrue))]
+        [Theory(DisplayName = nameof(ShouldCanRentReturnsTrue))]
         [Trait("Domain", "Renter")]
         [InlineData(LicenseType.A)]
         [InlineData(LicenseType.AB)]
-        public void ShouldCanRentalReturnsTrue(LicenseType licenseType)
+        public void ShouldCanRentReturnsTrue(LicenseType licenseType)
         {
             //arrange
             var id = Guid.NewGuid();
@@ -76,7 +76,7 @@ namespace UnitTests.Domain.Entity
             var renter = new Renter(id, name, document, birthDate, licenseNumber, licenseType);
 
             //act
-            var result = renter.CanRental();
+            var result = renter.CanRent();
 
             //assert
             result.Should().BeTrue();
@@ -86,7 +86,7 @@ namespace UnitTests.Domain.Entity
         [Trait("Domain", "Renter")]
         [InlineData("")]
         [InlineData(null)]
-        public void ShouldThrowExceptionWhenNameIsNullOrEmpty(string name) 
+        public void ShouldThrowExceptionWhenNameIsNullOrEmpty(string name)
         {
             //arrange
             var id = Guid.NewGuid();
@@ -138,6 +138,27 @@ namespace UnitTests.Domain.Entity
 
             //assert
             action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.LicenseNumber)} should not be null or empty");
+        }
+
+        [Fact(DisplayName = nameof(ShouldUploadLicenseImageReturnsTrue))]
+        [Trait("Domain", "Renter")]
+        public void ShouldUploadLicenseImageReturnsTrue()
+        {
+            //arrange
+            var id = Guid.NewGuid();
+            var name = _fixture.Create<string>();
+            var document = _fixture.Create<string>();
+            var licenseNumber = _fixture.Create<string>();
+            var birthDate = _fixture.Create<DateTime>();
+            var renter = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.A);
+
+            var url = _fixture.Create<string>();
+
+            //act
+            renter.UploadLicenseImage(url);
+
+            //assert
+            renter.LicenseImageUrl.Should().Be(url);
         }
     }
 }

@@ -58,5 +58,9 @@ namespace Domain.Entities
             return LicenseType == LicenseType.A || LicenseType == LicenseType.AB;
         }
 
+        public void UploadLicenseImage(string imageUrl)
+        {
+            LicenseImageUrl = imageUrl;
+        }
     }
 }

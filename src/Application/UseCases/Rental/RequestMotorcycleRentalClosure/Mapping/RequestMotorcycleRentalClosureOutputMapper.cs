@@ -51,9 +51,10 @@ namespace Application.UseCases.Rental.RequestMotorcycleRentalClosure.Mapping
             return new FineOutput
             {
                 Type = type,
-                DaysOverdue = type is FineType.Late ? (domain.DevolutionDate!.Value - domain.ExpectedDevolutionDate).Days : (domain.ExpectedDevolutionDate - domain.DevolutionDate!.Value).Days,
+                DaysOverdue = type is FineType.Late ? (domain.DevolutionDate!.Value - domain.ExpectedDevolutionDate).Days : 0,
+                DaysUnused = type is FineType.Early ? (domain.ExpectedDevolutionDate - domain.DevolutionDate!.Value).Days : 0,
                 Value = domain.TotalValue!.Value - domain.ExpectedTotalValue
-            };
+            }; 
         }
     }
 }

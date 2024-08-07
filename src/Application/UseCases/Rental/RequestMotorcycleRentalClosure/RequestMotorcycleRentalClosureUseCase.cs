@@ -31,7 +31,7 @@ namespace Application.UseCases.Rental.RequestMotorcycleRentalClosure
 
                 if (rental.IsFinished)
                 {
-                    output.ErrorMessages.Add($"Rental with id {request.RentalId} was already closed in {rental.DevolutionDate.Value.ToString("YYYY-mm-dd")}");
+                    output.ErrorMessages.Add($"Rental with id {request.RentalId} was already closed in {rental.DevolutionDate!.Value:YYYY-mm-dd}");
                     return output;
                 }
 

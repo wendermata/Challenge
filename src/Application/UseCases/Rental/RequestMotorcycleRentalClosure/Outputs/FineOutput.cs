@@ -7,5 +7,6 @@ namespace Application.UseCases.Rental.RequestMotorcycleRentalClosure.Outputs
         public FineType Type { get; set; }
         public double Value { get; set; }
         public int DaysOverdue { get; set; }
+        public int DaysUnused { get; set; }
     }
 }

@@ -14,4 +14,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\ReturnRentedMotorcycle\" />
+    <Folder Include="UseCases\RequestRentMotorcycle\" />
+    <Folder Include="UseCases\UploadRenterLicenseImage\" />
+  </ItemGroup>
+
 </Project>

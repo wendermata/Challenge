@@ -36,5 +36,15 @@ namespace Infrastructure.EntityFramework.Repositories
             NotFoundException.ThrowIfNull(renter, $"Renter '{id}' not found.");
             return renter!;
         }
+
+        public async Task<Renter> GetByDocumentAsync(string document, CancellationToken cancellationToken)
+        {
+            return await _renters.AsNoTracking().FirstOrDefaultAsync(x => x.Document == document, cancellationToken);
+        }
+
+        public async Task<Renter> GetByLicenseAsync(string licenseNumber, CancellationToken cancellationToken)
+        {
+            return await _renters.AsNoTracking().FirstOrDefaultAsync(x => x.LicenseNumber == licenseNumber, cancellationToken);
+        }
     }
 }

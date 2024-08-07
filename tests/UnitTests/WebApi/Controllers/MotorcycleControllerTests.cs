@@ -50,12 +50,12 @@ namespace UnitTests.WebApi.Controllers
             //assert
             result.Should().NotBeNull();
 
-            var badRequestOutput = (ObjectResult)result;
-            badRequestOutput.Should().NotBeNull();
-            badRequestOutput.StatusCode.Should().Be(StatusCodes.Status201Created);
-            badRequestOutput.Value.Should().BeOfType<CreateMotorcycleOutput>();
+            var resultOutput = (ObjectResult)result;
+            resultOutput.Should().NotBeNull();
+            resultOutput.StatusCode.Should().Be(StatusCodes.Status201Created);
+            resultOutput.Value.Should().BeOfType<CreateMotorcycleOutput>();
             
-            var outputValue = (CreateMotorcycleOutput)badRequestOutput.Value;
+            var outputValue = (CreateMotorcycleOutput)resultOutput.Value;
             outputValue.Should().NotBeNull();
             outputValue!.IsValid.Should().BeTrue();
             outputValue.ErrorMessages.Should().BeNullOrEmpty();
@@ -108,12 +108,12 @@ namespace UnitTests.WebApi.Controllers
             //assert
             result.Should().NotBeNull();
 
-            var badRequestOutput = (ObjectResult)result;
-            badRequestOutput.Should().NotBeNull();
-            badRequestOutput.StatusCode.Should().Be(StatusCodes.Status200OK);
-            badRequestOutput.Value.Should().BeOfType<ListMotorcyclesOutput>();
+            var resultOutput = (ObjectResult)result;
+            resultOutput.Should().NotBeNull();
+            resultOutput.StatusCode.Should().Be(StatusCodes.Status200OK);
+            resultOutput.Value.Should().BeOfType<ListMotorcyclesOutput>();
 
-            var outputValue = (ListMotorcyclesOutput)badRequestOutput.Value;
+            var outputValue = (ListMotorcyclesOutput)resultOutput.Value;
             outputValue.Should().NotBeNull();
             outputValue!.IsValid.Should().BeTrue();
             outputValue.ErrorMessages.Should().BeNullOrEmpty();
@@ -166,12 +166,12 @@ namespace UnitTests.WebApi.Controllers
             //assert
             result.Should().NotBeNull();
 
-            var badRequestOutput = (ObjectResult)result;
-            badRequestOutput.Should().NotBeNull();
-            badRequestOutput.StatusCode.Should().Be(StatusCodes.Status200OK);
-            badRequestOutput.Value.Should().BeOfType<Output>();
+            var resultOutput = (ObjectResult)result;
+            resultOutput.Should().NotBeNull();
+            resultOutput.StatusCode.Should().Be(StatusCodes.Status200OK);
+            resultOutput.Value.Should().BeOfType<Output>();
 
-            var outputValue = (Output)badRequestOutput.Value;
+            var outputValue = (Output)resultOutput.Value;
             outputValue.Should().NotBeNull();
             outputValue!.IsValid.Should().BeTrue();
             outputValue.ErrorMessages.Should().BeNullOrEmpty();
@@ -224,12 +224,12 @@ namespace UnitTests.WebApi.Controllers
             //assert
             result.Should().NotBeNull();
 
-            var badRequestOutput = (ObjectResult)result;
-            badRequestOutput.Should().NotBeNull();
-            badRequestOutput.StatusCode.Should().Be(StatusCodes.Status200OK);
-            badRequestOutput.Value.Should().BeOfType<Output>();
+            var resultOutput = (ObjectResult)result;
+            resultOutput.Should().NotBeNull();
+            resultOutput.StatusCode.Should().Be(StatusCodes.Status200OK);
+            resultOutput.Value.Should().BeOfType<Output>();
 
-            var outputValue = (Output)badRequestOutput.Value;
+            var outputValue = (Output)resultOutput.Value;
             outputValue.Should().NotBeNull();
             outputValue!.IsValid.Should().BeTrue();
             outputValue.ErrorMessages.Should().BeNullOrEmpty();

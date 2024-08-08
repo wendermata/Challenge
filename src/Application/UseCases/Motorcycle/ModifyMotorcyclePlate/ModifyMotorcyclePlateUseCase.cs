@@ -1,5 +1,4 @@
 ﻿using Application.Common;
-using Application.Interfaces;
 using Application.UseCases.Motorcycle.ModifyMotorcyclePlate.Inputs;
 using Domain.Repository;
 
@@ -8,12 +7,10 @@ namespace Application.UseCases.Motorcycle.ModifyMotorcyclePlate
     public class ModifyMotorcyclePlateUseCase : IModifyMotorcyclePlateUseCase
     {
         private readonly IMotorcycleRepository _repository;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public ModifyMotorcyclePlateUseCase(IMotorcycleRepository repository, IUnitOfWork unitOfWork)
+        public ModifyMotorcyclePlateUseCase(IMotorcycleRepository repository)
         {
             _repository = repository;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<Output> Handle(ModifyMotorcyclePlateInput request, CancellationToken cancellationToken)
@@ -37,7 +34,6 @@ namespace Application.UseCases.Motorcycle.ModifyMotorcyclePlate
                 motorcycle.UpdatePlate(request.NewPlate);
 
                 await _repository.UpdateAsync(motorcycle, cancellationToken);
-                await _unitOfWork.Commit(cancellationToken);
                 output.Messages.Add($"Motorcycle with Id: {request.Id} successfully update plate with: {request.NewPlate}");
                 return output;
             }

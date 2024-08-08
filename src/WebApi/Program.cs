@@ -1,14 +1,13 @@
 using Application.Extensions;
-using Infrastructure.EntityFramework.Extensions;
+using Infra.Mongo.Extensions;
 using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddConections()
-    .AddRepositories()
     .AddConfigureControllers()
     .AddUseCases()
+    .AddMongo(builder.Configuration)
     .AddCors(p => p.AddPolicy("CORS",
         builder =>
         {

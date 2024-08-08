@@ -1,14 +1,17 @@
-version: '3.4'
+version: '3.8'
 
 services:
-  mysql:
-    container_name: mysql
-    image: mysql:8.0
-    hostname: challengedb
-    network_mode: "host"
-    ports:
-      - 3306:3306
+  mongo:
+    image: mongo:latest
+    container_name: my_mongo
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "teste"
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "27017:27017"
     volumes:
-      - .docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

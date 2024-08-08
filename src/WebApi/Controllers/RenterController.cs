@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
+    [ApiController]
+    [Route("renter")]
     public class RenterController : ControllerBase
     {
         private readonly ILogger<RenterController> _logger;

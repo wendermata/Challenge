@@ -2,6 +2,11 @@
 using Application.UseCases.Motorcycle.DeleteMotorcycle;
 using Application.UseCases.Motorcycle.ListMotorcycles;
 using Application.UseCases.Motorcycle.ModifyMotorcyclePlate;
+using Application.UseCases.Rental.RequestMotorcycleRental;
+using Application.UseCases.Rental.RequestMotorcycleRentalClosure;
+using Application.UseCases.Rental.RequestRentMotorcycle;
+using Application.UseCases.Renter.CreateRenter;
+using Application.UseCases.Renter.UploadRenterLicenseImage;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Extensions
@@ -16,6 +21,11 @@ namespace Application.Extensions
             services.AddTransient<IDeleteMotorcycleUseCase, DeleteMotorcycleUseCase>();
             services.AddTransient<IModifyMotorcyclePlateUseCase, ModifyMotorcyclePlateUseCase>();
             services.AddTransient<IListMotorcyclesUseCase, ListMotorcyclesUseCase>();
+            services.AddTransient<IRequestMotorcycleRentalUseCase, RequestMotorcycleRentalUseCase>();
+            services.AddTransient<IRequestMotorcycleRentalClosureUseCase, RequestMotorcycleRentalClosureUseCase>();
+            services.AddTransient<ICreateRenterUseCase, CreateRenterUseCase>();
+            services.AddTransient<IUploadRenterLicenseImageUseCase, UploadRenterLicenseImageUseCase>();
+
             return services;
         }
     }

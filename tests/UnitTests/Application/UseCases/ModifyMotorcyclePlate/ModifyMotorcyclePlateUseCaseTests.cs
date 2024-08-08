@@ -1,5 +1,4 @@
-﻿using Application.Interfaces;
-using Application.UseCases.Motorcycle.ModifyMotorcyclePlate;
+﻿using Application.UseCases.Motorcycle.ModifyMotorcyclePlate;
 using Application.UseCases.Motorcycle.ModifyMotorcyclePlate.Inputs;
 using Domain.Entities;
 using Domain.Repository;
@@ -12,7 +11,6 @@ namespace UnitTests.Application.UseCases.ModifyMotorcyclePlate
         private readonly CancellationToken _cancellationToken;
 
         private readonly IMotorcycleRepository _repository;
-        private readonly IUnitOfWork _unitOfWork;
 
         private readonly ModifyMotorcyclePlateUseCase _useCase;
 
@@ -22,9 +20,8 @@ namespace UnitTests.Application.UseCases.ModifyMotorcyclePlate
             _cancellationToken = new CancellationToken();
 
             _repository = Substitute.For<IMotorcycleRepository>();
-            _unitOfWork = Substitute.For<IUnitOfWork>();
 
-            _useCase = new ModifyMotorcyclePlateUseCase(_repository, _unitOfWork);
+            _useCase = new ModifyMotorcyclePlateUseCase(_repository);
         }
 
         [Fact(DisplayName = nameof(ShouldFailWhenMotorcycleIsNotFound))]

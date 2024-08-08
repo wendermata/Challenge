@@ -1,5 +1,4 @@
-﻿using Application.Interfaces;
-using Application.UseCases.Motorcycle.DeleteMotorcycle;
+﻿using Application.UseCases.Motorcycle.DeleteMotorcycle;
 using Application.UseCases.Motorcycle.DeleteMotorcycle.Inputs;
 using Domain.Entities;
 using Domain.Repository;
@@ -13,7 +12,6 @@ namespace UnitTests.Application.UseCases.DeleteMotorcycle
 
         private readonly IMotorcycleRepository _motorcycleRepository;
         private readonly IRentalRepository _rentalRepository;
-        private readonly IUnitOfWork _unitOfWork;
 
         private readonly DeleteMotorcycleUseCase _useCase;
 
@@ -24,9 +22,8 @@ namespace UnitTests.Application.UseCases.DeleteMotorcycle
 
             _motorcycleRepository = Substitute.For<IMotorcycleRepository>();
             _rentalRepository = Substitute.For<IRentalRepository>();
-            _unitOfWork = Substitute.For<IUnitOfWork>();
 
-            _useCase = new DeleteMotorcycleUseCase(_motorcycleRepository, _rentalRepository, _unitOfWork);
+            _useCase = new DeleteMotorcycleUseCase(_motorcycleRepository, _rentalRepository);
         }
 
         [Fact(DisplayName = nameof(ShouldFailWhenRequestIsInvalid))]

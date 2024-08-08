@@ -1,5 +1,4 @@
-﻿using Application.Interfaces;
-using Application.UseCases.Rental.RequestMotorcycleRentalClosure.Inputs;
+﻿using Application.UseCases.Rental.RequestMotorcycleRentalClosure.Inputs;
 using Application.UseCases.Rental.RequestMotorcycleRentalClosure.Mapping;
 using Application.UseCases.Rental.RequestMotorcycleRentalClosure.Outputs;
 using Domain.Repository;
@@ -9,12 +8,10 @@ namespace Application.UseCases.Rental.RequestMotorcycleRentalClosure
     public class RequestMotorcycleRentalClosureUseCase : IRequestMotorcycleRentalClosureUseCase
     {
         private readonly IRentalRepository _rentalRepository;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public RequestMotorcycleRentalClosureUseCase(IRentalRepository rentalRepository, IUnitOfWork unitOfWork)
+        public RequestMotorcycleRentalClosureUseCase(IRentalRepository rentalRepository)
         {
             _rentalRepository = rentalRepository;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<RequestMotorcycleRentalClosureOutput> Handle(RequestMotorcycleRentalClosureInput request, CancellationToken cancellationToken)
@@ -37,7 +34,6 @@ namespace Application.UseCases.Rental.RequestMotorcycleRentalClosure
 
                 rental.FinishRental(request.ClosureDate);
                 await _rentalRepository.UpdateAsync(rental, cancellationToken);
-                await _unitOfWork.Commit(cancellationToken);
 
                 output = rental.MapToOutput();
                 return output;

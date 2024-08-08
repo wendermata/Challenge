@@ -1,5 +1,4 @@
-﻿using Application.Interfaces;
-using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
+﻿using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
 using Application.UseCases.Motorcycle.CreateMotorcycle.Mapping;
 using Application.UseCases.Motorcycle.CreateMotorcycle.Outputs;
 using Domain.Repository;
@@ -9,12 +8,10 @@ namespace Application.UseCases.Motorcycle.CreateMotorcycle
     public class CreateMotorcycleUseCase : ICreateMotorcycleUseCase
     {
         private readonly IMotorcycleRepository _repository;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public CreateMotorcycleUseCase(IMotorcycleRepository motorcycleRepository, IUnitOfWork unitOfWork)
+        public CreateMotorcycleUseCase(IMotorcycleRepository motorcycleRepository)
         {
             _repository = motorcycleRepository;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<CreateMotorcycleOutput> Handle(CreateMotorcycleInput request, CancellationToken cancellationToken)
@@ -36,7 +33,6 @@ namespace Application.UseCases.Motorcycle.CreateMotorcycle
                 }
 
                 await _repository.InsertAsync(domain, cancellationToken);
-                await _unitOfWork.Commit(cancellationToken);
 
                 output = domain.MapToOutput();
                 return output;

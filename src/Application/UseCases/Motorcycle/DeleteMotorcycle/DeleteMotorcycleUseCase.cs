@@ -1,5 +1,4 @@
 ﻿using Application.Common;
-using Application.Interfaces;
 using Application.UseCases.Motorcycle.DeleteMotorcycle.Inputs;
 using Domain.Repository;
 
@@ -9,15 +8,12 @@ namespace Application.UseCases.Motorcycle.DeleteMotorcycle
     {
         private readonly IMotorcycleRepository _motorcycleRepository;
         private readonly IRentalRepository _rentalRepository;
-        private readonly IUnitOfWork _unitOfWork;
 
         public DeleteMotorcycleUseCase(IMotorcycleRepository motorcycleRepository,
-            IRentalRepository rentalRepository,
-            IUnitOfWork unitOfWork)
+            IRentalRepository rentalRepository)
         {
             _motorcycleRepository = motorcycleRepository;
             _rentalRepository = rentalRepository;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<Output> Handle(DeleteMotorcycleInput request, CancellationToken cancellationToken)
@@ -47,7 +43,6 @@ namespace Application.UseCases.Motorcycle.DeleteMotorcycle
 
                 motorcycle.Delete();
                 await _motorcycleRepository.UpdateAsync(motorcycle, cancellationToken);
-                await _unitOfWork.Commit(cancellationToken);
 
                 output.Messages.Add($"Motorcycle with Id: {request.Id} successfully deleted");
                 return output;

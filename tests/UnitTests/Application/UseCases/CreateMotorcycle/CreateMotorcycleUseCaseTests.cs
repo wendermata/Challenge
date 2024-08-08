@@ -1,5 +1,4 @@
-﻿using Application.Interfaces;
-using Application.UseCases.Motorcycle.CreateMotorcycle;
+﻿using Application.UseCases.Motorcycle.CreateMotorcycle;
 using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
 using Domain.Repository;
 
@@ -11,7 +10,6 @@ namespace UnitTests.Application.UseCases.CreateMotorcycle
         private readonly CancellationToken _cancellationToken;
 
         private readonly IMotorcycleRepository _motorcycleRepository;
-        private readonly IUnitOfWork _unitOfWork;
 
         private readonly CreateMotorcycleUseCase _useCase;
 
@@ -21,9 +19,8 @@ namespace UnitTests.Application.UseCases.CreateMotorcycle
             _cancellationToken = new CancellationToken();
 
             _motorcycleRepository = Substitute.For<IMotorcycleRepository>();
-            _unitOfWork = Substitute.For<IUnitOfWork>();
 
-            _useCase = new CreateMotorcycleUseCase(_motorcycleRepository, _unitOfWork);
+            _useCase = new CreateMotorcycleUseCase(_motorcycleRepository);
         }
 
         [Fact(DisplayName = nameof(ShouldFailWhenRequestIsInvalid))]

@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Infrastructure.EntityFramework\Infrastructure.EntityFramework.csproj" />
+    <ProjectReference Include="..\Infra.Mongo\Infra.Mongo.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 using Application.Common;
 using Application.UseCases.Renter.UploadRenterLicenseImage.Inputs;
 using Domain.Repository;
+using System.IO;
 
 namespace Application.UseCases.Renter.UploadRenterLicenseImage
 {
@@ -30,7 +31,8 @@ namespace Application.UseCases.Renter.UploadRenterLicenseImage
 
                 if (renter.LicenseImageFileName is null)
                 {
-                    renter.GetFriendlyLicenseImage();
+                    var extension = Path.GetExtension(request.Image.FileName);
+                    renter.GetFriendlyLicenseImage(extension);
                     await _s3Service.UploadFileAsync(request.Image, renter.LicenseImageFileName);
                 }
                 else

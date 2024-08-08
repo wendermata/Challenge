@@ -62,15 +62,11 @@ namespace Domain.Entities
             return LicenseType == LicenseType.A || LicenseType == LicenseType.AB;
         }
 
-        public void UploadLicenseImage(string imageUrl)
+        public void GetFriendlyLicenseImage(string extension)
         {
-            LicenseImageFileName = imageUrl;
-        }
-
-        public void GetFriendlyLicenseImage()
-        {
-            var fileKeyName = string.Concat(Name, "-", LicenseNumber.AsSpan((LicenseNumber.Length - 5), 5));
-            LicenseNumber = fileKeyName;
+            var fileKeyName = string.Concat(Name.Split(' ')[0], "-", LicenseNumber.Substring(LicenseNumber.Length - 5, 5), extension);
+            LicenseImageFileName = fileKeyName;
+            UpdatedAt = DateTime.Now;
         }
 
     }

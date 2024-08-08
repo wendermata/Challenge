@@ -82,7 +82,20 @@ namespace Infra.Mongo.Repositories
 
         public async Task UpdateAsync(Motorcycle entity, CancellationToken cancellationToken)
         {
-            await _collection.UpdateOneAsync(c => c.Id == entity.Id, Builders<Motorcycle>.Update.Set(x => x, entity), cancellationToken: cancellationToken);
+            var filter = Builders<Motorcycle>.Filter.Eq(c => c.Id, entity.Id);
+            var updateDefinition = new UpdateDefinitionBuilder<Motorcycle>();
+            var updates = new List<UpdateDefinition<Motorcycle>>
+            {
+                updateDefinition.Set(e => e.Year, entity.Year),
+                updateDefinition.Set(e => e.Model, entity.Model),
+                updateDefinition.Set(e => e.Plate, entity.Model),
+                updateDefinition.Set(e => e.IsActive, entity.IsActive),
+                updateDefinition.Set(e => e.CreatedAt, entity.CreatedAt),
+                updateDefinition.Set(e => e.UpdatedAt, entity.UpdatedAt)
+            };
+
+            var update = updateDefinition.Combine(updates);
+            await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
         }
     }
 }

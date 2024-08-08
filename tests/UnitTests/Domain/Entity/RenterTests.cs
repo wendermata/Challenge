@@ -139,26 +139,5 @@ namespace UnitTests.Domain.Entity
             //assert
             action.Should().Throw<EntityValidationException>().WithMessage($"{nameof(Renter.LicenseNumber)} should not be null or empty");
         }
-
-        [Fact(DisplayName = nameof(ShouldUploadLicenseImageReturnsTrue))]
-        [Trait("Domain", "Renter")]
-        public void ShouldUploadLicenseImageReturnsTrue()
-        {
-            //arrange
-            var id = Guid.NewGuid();
-            var name = _fixture.Create<string>();
-            var document = _fixture.Create<string>();
-            var licenseNumber = _fixture.Create<string>();
-            var birthDate = _fixture.Create<DateTime>();
-            var renter = new Renter(id, name, document, birthDate, licenseNumber, LicenseType.A);
-
-            var url = _fixture.Create<string>();
-
-            //act
-            renter.UploadLicenseImage(url);
-
-            //assert
-            renter.LicenseImageFileName.Should().Be(url);
-        }
     }
 }

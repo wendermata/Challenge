@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         [HttpPost("upload-license-image")]
         [ProducesResponseType(typeof(Output), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Output), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UploadLicenseImageAsync([FromBody] UploadRenterLicenseImageInput input, CancellationToken cancellationToken)
+        public async Task<IActionResult> UploadLicenseImageAsync([FromForm] UploadRenterLicenseImageInput input, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(input, cancellationToken);
 

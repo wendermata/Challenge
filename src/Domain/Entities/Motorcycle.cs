@@ -1,9 +1,13 @@
 ﻿using Domain.Exceptions;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Entities
 {
     public class Motorcycle
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
         public Guid Id { get; private set; }
         public int Year { get; private set; }
         public string Model { get; private set; }

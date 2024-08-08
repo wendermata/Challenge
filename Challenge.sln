@@ -18,9 +18,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\WebApi\WebApi.csproj", "{0F89A628-DC39-4707-AA0C-173D1D684786}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "env", "env", "{81241FAF-2082-4F80-875D-5CE1B38CE48C}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Mongo", "src\Infra.Mongo\Infra.Mongo.csproj", "{1488C4C3-AB52-449A-8D2B-A5B7F931CA13}"
 EndProject

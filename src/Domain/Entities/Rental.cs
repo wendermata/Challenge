@@ -1,11 +1,19 @@
 ﻿using Domain.Enums;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Entities
 {
     public class Rental
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
         public Guid Id { get; private set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
         public Guid RenterId { get; private set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
         public Guid MotorcycleId { get; private set; }
         public PlanType PlanType { get; private set; }
         public DateTime InitialDate { get; private set; }

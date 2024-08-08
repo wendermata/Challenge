@@ -1,10 +1,14 @@
 ﻿using Domain.Enums;
 using Domain.Exceptions;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Entities
 {
     public class Renter
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
         public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Document { get; private set; }

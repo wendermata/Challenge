@@ -47,7 +47,8 @@ namespace Infra.Mongo.Repositories
 
         public async Task UpdateAsync(Renter entity, CancellationToken cancellationToken)
         {
-            await _collection.UpdateOneAsync(c => c.Id == entity.Id, Builders<Renter>.Update.Set(x => x, entity), cancellationToken: cancellationToken);
+            var filter = Builders<Renter>.Filter.Eq(c => c.Id, entity.Id);
+            await _collection.FindOneAndReplaceAsync(filter, entity, cancellationToken: cancellationToken);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace UnitTests.Domain.Entity
             renter.LicenseType.Should().Be(licenseType);
             renter.CreatedAt.Date.Should().Be(DateTime.Now.Date);
 
-            renter.LicenseImageUrl.Should().BeNull();
+            renter.LicenseImageFileName.Should().BeNull();
             renter.UpdatedAt.Should().BeNull();
         }
 
@@ -158,7 +158,7 @@ namespace UnitTests.Domain.Entity
             renter.UploadLicenseImage(url);
 
             //assert
-            renter.LicenseImageUrl.Should().Be(url);
+            renter.LicenseImageFileName.Should().Be(url);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Domain.Entities
         public DateTime BirthDate { get; private set; }
         public string LicenseNumber { get; private set; }
         public LicenseType LicenseType { get; private set; }
-        public string LicenseImageUrl { get; private set; }
+        public string LicenseImageFileName { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
         public DateTime? UpdatedAt { get; private set; }
@@ -27,7 +27,7 @@ namespace Domain.Entities
             DateTime birthDate,
             string licenseNumber,
             LicenseType licenseType,
-            string licenseImage = null,
+            string licenseImageFileName = null,
             DateTime? createdAt = null,
             DateTime? updatedAt = null)
         {
@@ -37,7 +37,7 @@ namespace Domain.Entities
             BirthDate = birthDate;
             LicenseNumber = licenseNumber;
             LicenseType = licenseType;
-            LicenseImageUrl = licenseImage;
+            LicenseImageFileName = licenseImageFileName;
 
             CreatedAt = createdAt ?? DateTime.Now;
             UpdatedAt = updatedAt;
@@ -64,7 +64,14 @@ namespace Domain.Entities
 
         public void UploadLicenseImage(string imageUrl)
         {
-            LicenseImageUrl = imageUrl;
+            LicenseImageFileName = imageUrl;
         }
+
+        public void GetFriendlyLicenseImage()
+        {
+            var fileKeyName = string.Concat(Name, "-", LicenseNumber.AsSpan((LicenseNumber.Length - 5), 5));
+            LicenseNumber = fileKeyName;
+        }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using Application.UseCases.Motorcycle.CreateMotorcycle;
+﻿using Application.Boundaries.Services.S3;
+using Application.Boundaries.Services.S3.Settings;
+using Application.UseCases.Motorcycle.CreateMotorcycle;
 using Application.UseCases.Motorcycle.DeleteMotorcycle;
 using Application.UseCases.Motorcycle.ListMotorcycles;
 using Application.UseCases.Motorcycle.ModifyMotorcyclePlate;
@@ -7,7 +9,9 @@ using Application.UseCases.Rental.RequestMotorcycleRentalClosure;
 using Application.UseCases.Rental.RequestRentMotorcycle;
 using Application.UseCases.Renter.CreateRenter;
 using Application.UseCases.Renter.UploadRenterLicenseImage;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace Application.Extensions
 {
@@ -26,6 +30,20 @@ namespace Application.Extensions
             services.AddTransient<ICreateRenterUseCase, CreateRenterUseCase>();
             services.AddTransient<IUploadRenterLicenseImageUseCase, UploadRenterLicenseImageUseCase>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddBoundaries(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddS3Service(configuration);
+            return services;
+        }
+
+        private static IServiceCollection AddS3Service(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<S3Settings>(configuration.GetSection(nameof(S3Settings)));
+            services.AddSingleton(sp => sp.GetRequiredService<IOptions<S3Settings>>().Value);
+            services.AddTransient<IS3Service, S3Service>();
             return services;
         }
     }

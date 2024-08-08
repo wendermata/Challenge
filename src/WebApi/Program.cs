@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddConfigureControllers()
     .AddUseCases()
+    .AddBoundaries(builder.Configuration)
     .AddMongo(builder.Configuration)
     .AddCors(p => p.AddPolicy("CORS",
         builder =>

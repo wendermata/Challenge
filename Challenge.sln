@@ -18,8 +18,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\WebApi\WebApi.csproj", "{0F89A628-DC39-4707-AA0C-173D1D684786}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "env", "env", "{81241FAF-2082-4F80-875D-5CE1B38CE48C}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Mongo", "src\Infra.Mongo\Infra.Mongo.csproj", "{1488C4C3-AB52-449A-8D2B-A5B7F931CA13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Kafka.Producer", "src\Infra.Kafka.Producer\Infra.Kafka.Producer.csproj", "{232F8282-76C2-4CFF-93E0-EED2E05FA4E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Kafka.Consumer", "src\Infra.Kafka.Consumer\Infra.Kafka.Consumer.csproj", "{FD545FDB-1DA5-43B1-978E-9056CD03B5F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +58,14 @@ Global
 		{1488C4C3-AB52-449A-8D2B-A5B7F931CA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1488C4C3-AB52-449A-8D2B-A5B7F931CA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1488C4C3-AB52-449A-8D2B-A5B7F931CA13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{232F8282-76C2-4CFF-93E0-EED2E05FA4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{232F8282-76C2-4CFF-93E0-EED2E05FA4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{232F8282-76C2-4CFF-93E0-EED2E05FA4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{232F8282-76C2-4CFF-93E0-EED2E05FA4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD545FDB-1DA5-43B1-978E-9056CD03B5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD545FDB-1DA5-43B1-978E-9056CD03B5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD545FDB-1DA5-43B1-978E-9056CD03B5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD545FDB-1DA5-43B1-978E-9056CD03B5F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +77,8 @@ Global
 		{E0D3335E-2523-41F4-8B1E-D33ADAA72EFF} = {3DCEE8A5-B690-4039-92FB-28CE1B5B2CDA}
 		{0F89A628-DC39-4707-AA0C-173D1D684786} = {3304BE2D-ACA1-47A1-920B-61286B5EB15E}
 		{1488C4C3-AB52-449A-8D2B-A5B7F931CA13} = {3304BE2D-ACA1-47A1-920B-61286B5EB15E}
+		{232F8282-76C2-4CFF-93E0-EED2E05FA4E3} = {3304BE2D-ACA1-47A1-920B-61286B5EB15E}
+		{FD545FDB-1DA5-43B1-978E-9056CD03B5F7} = {3304BE2D-ACA1-47A1-920B-61286B5EB15E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6946575E-1605-4AFF-A964-B45646B3F0A1}

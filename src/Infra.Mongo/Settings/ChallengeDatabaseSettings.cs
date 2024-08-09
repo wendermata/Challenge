@@ -2,6 +2,7 @@
 {
     public class ChallengeDatabaseSettings : IChallengeDatabaseSettings
     {
+        public string KafkaMessagesCollectionName { get; set; }
         public string MotorcycleCollectionName { get; set; }
         public string RenterCollectionName { get; set; }
         public string RentalCollectionName { get; set; }

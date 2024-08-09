@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infra.Kafka.Producer\Infra.Kafka.Producer.csproj" />
   </ItemGroup>
 
 </Project>

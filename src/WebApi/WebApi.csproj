@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infra.Kafka.Consumer\Infra.Kafka.Consumer.csproj" />
     <ProjectReference Include="..\Infra.Mongo\Infra.Mongo.csproj" />
   </ItemGroup>
 

@@ -25,6 +25,7 @@ namespace Infra.Mongo.Extensions
 
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
+            services.AddTransient<IKafkaMessageRepository, KafkaMessageRepository>();
             services.AddTransient<IMotorcycleRepository, MotorcycleRepository>();
             services.AddTransient<IRentalRepository, RentalRepository>();
             services.AddTransient<IRenterRepository, RenterRepository>();
@@ -34,6 +35,13 @@ namespace Infra.Mongo.Extensions
 
         private static void RegisterMongoMappings()
         {
+            BsonClassMap.RegisterClassMap<KafkaMessage>(map =>
+            {
+                map.AutoMap();
+                map.MapProperty(x => x.Id)
+                    .SetSerializer(new GuidSerializer(BsonType.String));
+            });
+
             BsonClassMap.RegisterClassMap<Motorcycle>(map =>
             {
                 map.AutoMap();

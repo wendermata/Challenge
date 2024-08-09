@@ -19,6 +19,7 @@ namespace Infra.Kafka.Consumer
         {
             _settings = settings;
             _mediator = mediator;
+            _logger = logger;
             _config = new ConsumerConfig
             {
                 GroupId = _settings.GroupId,
@@ -38,7 +39,7 @@ namespace Infra.Kafka.Consumer
                     try
                     {
                         var cr = _consumer.Consume();
-                        _logger.LogInformation($"Consumed message '{cr.Value}' at: '{cr.TopicPartitionOffset}'.");
+                        _logger.LogInformation($"Consumed message '{cr.Value}'.");
                         var input = cr.Value.MapToInput();
                         _mediator.Send(input);
                     }

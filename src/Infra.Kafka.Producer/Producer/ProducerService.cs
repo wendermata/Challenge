@@ -28,7 +28,7 @@ namespace Infra.Kafka.Producer
         {
             _producer.Produce(_settings.Topic, new Message<Null, string> { Value = message }, (deliveryReport) =>
             {
-                if (deliveryReport.Error != null)
+                if (deliveryReport.Error != null && deliveryReport.Error.Reason != "Success")
                 {
                     _logger.LogError($"Delivery Error: {deliveryReport.Error.Reason}");
                     return;

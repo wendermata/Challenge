@@ -15,7 +15,7 @@ namespace Infra.Mongo.Repositories
         public KafkaMessageRepository(IMongoService service, IOptions<ChallengeDatabaseSettings> settings)
         {
             _settings = settings.Value;
-            _collection = service.Database.GetCollection<KafkaMessage>(_settings.MotorcycleCollectionName);
+            _collection = service.Database.GetCollection<KafkaMessage>(_settings.KafkaMessagesCollectionName);
         }
 
         public async Task DeleteAsync(KafkaMessage entity, CancellationToken cancellationToken)

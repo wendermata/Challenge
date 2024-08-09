@@ -36,7 +36,7 @@ namespace Application.UseCases.Motorcycle.CreateMotorcycle
 
                 if (await _repository.CheckIfExistsAsync(domain.Plate, cancellationToken))
                 {
-                    _logger.LogError($"{domain.Plate} already registered in database");
+                    _logger.LogWarning($"{domain.Plate} already registered in database");
                     output.ErrorMessages.Add($"{domain.Plate} already registered in database");
                     return output;
                 }

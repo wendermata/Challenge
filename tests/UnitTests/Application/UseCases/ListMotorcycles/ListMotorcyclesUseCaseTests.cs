@@ -3,6 +3,7 @@ using Application.UseCases.Motorcycle.ListMotorcycles.Inputs;
 using Domain.Entities;
 using Domain.Repository;
 using Domain.Repository.Shared.SearchableRepository;
+using Microsoft.Extensions.Logging;
 
 namespace UnitTests.Application.UseCases.ListMotorcycles
 {
@@ -13,6 +14,7 @@ namespace UnitTests.Application.UseCases.ListMotorcycles
         private readonly CancellationToken _cancellationToken;
 
         private readonly IMotorcycleRepository _repository;
+        private readonly ILogger<ListMotorcyclesUseCase> _logger;
         private readonly ListMotorcyclesUseCase _useCase;
 
         public ListMotorcyclesUseCaseTests()
@@ -21,7 +23,9 @@ namespace UnitTests.Application.UseCases.ListMotorcycles
             _cancellationToken = new CancellationToken();
 
             _repository = Substitute.For<IMotorcycleRepository>();
-            _useCase = new  ListMotorcyclesUseCase(_repository);
+            _logger = Substitute.For<ILogger<ListMotorcyclesUseCase>>();
+
+            _useCase = new  ListMotorcyclesUseCase(_repository, _logger);
         }
 
         [Fact(DisplayName = nameof(ShouldFailWhenRequestIsInvalid))]

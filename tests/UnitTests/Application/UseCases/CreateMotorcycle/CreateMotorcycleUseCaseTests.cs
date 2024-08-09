@@ -1,6 +1,8 @@
 ﻿using Application.UseCases.Motorcycle.CreateMotorcycle;
 using Application.UseCases.Motorcycle.CreateMotorcycle.Inputs;
 using Domain.Repository;
+using Infra.Kafka.Producer;
+using Microsoft.Extensions.Logging;
 
 namespace UnitTests.Application.UseCases.CreateMotorcycle
 {
@@ -10,6 +12,8 @@ namespace UnitTests.Application.UseCases.CreateMotorcycle
         private readonly CancellationToken _cancellationToken;
 
         private readonly IMotorcycleRepository _motorcycleRepository;
+        private readonly IProducerService _producerService;
+        private readonly ILogger<CreateMotorcycleUseCase> _logger;
 
         private readonly CreateMotorcycleUseCase _useCase;
 
@@ -19,8 +23,10 @@ namespace UnitTests.Application.UseCases.CreateMotorcycle
             _cancellationToken = new CancellationToken();
 
             _motorcycleRepository = Substitute.For<IMotorcycleRepository>();
+            _producerService = Substitute.For<IProducerService>();
+            _logger = Substitute.For<ILogger<CreateMotorcycleUseCase>>();
 
-            _useCase = new CreateMotorcycleUseCase(_motorcycleRepository);
+            _useCase = new CreateMotorcycleUseCase(_motorcycleRepository, _producerService, _logger);
         }
 
         [Fact(DisplayName = nameof(ShouldFailWhenRequestIsInvalid))]

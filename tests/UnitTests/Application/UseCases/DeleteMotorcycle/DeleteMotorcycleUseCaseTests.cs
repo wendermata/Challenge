@@ -2,6 +2,7 @@
 using Application.UseCases.Motorcycle.DeleteMotorcycle.Inputs;
 using Domain.Entities;
 using Domain.Repository;
+using Microsoft.Extensions.Logging;
 
 namespace UnitTests.Application.UseCases.DeleteMotorcycle
 {
@@ -12,6 +13,7 @@ namespace UnitTests.Application.UseCases.DeleteMotorcycle
 
         private readonly IMotorcycleRepository _motorcycleRepository;
         private readonly IRentalRepository _rentalRepository;
+        private readonly ILogger<DeleteMotorcycleUseCase> _logger;
 
         private readonly DeleteMotorcycleUseCase _useCase;
 
@@ -22,8 +24,9 @@ namespace UnitTests.Application.UseCases.DeleteMotorcycle
 
             _motorcycleRepository = Substitute.For<IMotorcycleRepository>();
             _rentalRepository = Substitute.For<IRentalRepository>();
+            _logger = Substitute.For<ILogger<DeleteMotorcycleUseCase>>();
 
-            _useCase = new DeleteMotorcycleUseCase(_motorcycleRepository, _rentalRepository);
+            _useCase = new DeleteMotorcycleUseCase(_motorcycleRepository, _rentalRepository, _logger);
         }
 
         [Fact(DisplayName = nameof(ShouldFailWhenRequestIsInvalid))]

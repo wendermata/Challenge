@@ -2,6 +2,7 @@
 using Application.UseCases.Motorcycle.ModifyMotorcyclePlate.Inputs;
 using Domain.Entities;
 using Domain.Repository;
+using Microsoft.Extensions.Logging;
 
 namespace UnitTests.Application.UseCases.ModifyMotorcyclePlate
 {
@@ -11,6 +12,7 @@ namespace UnitTests.Application.UseCases.ModifyMotorcyclePlate
         private readonly CancellationToken _cancellationToken;
 
         private readonly IMotorcycleRepository _repository;
+        private readonly ILogger<ModifyMotorcyclePlateUseCase> _logger;
 
         private readonly ModifyMotorcyclePlateUseCase _useCase;
 
@@ -20,8 +22,9 @@ namespace UnitTests.Application.UseCases.ModifyMotorcyclePlate
             _cancellationToken = new CancellationToken();
 
             _repository = Substitute.For<IMotorcycleRepository>();
+            _logger = Substitute.For<ILogger<ModifyMotorcyclePlateUseCase>>();
 
-            _useCase = new ModifyMotorcyclePlateUseCase(_repository);
+            _useCase = new ModifyMotorcyclePlateUseCase(_repository, _logger);
         }
 
         [Fact(DisplayName = nameof(ShouldFailWhenMotorcycleIsNotFound))]

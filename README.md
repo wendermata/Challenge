@@ -8,7 +8,7 @@ Plataforma: .NET
 
 Conceitos: Clean Arch, DDD, SOLID
 
-Desgin Patterns: Mediator, Singleton, Transient
+Desgin Patterns: Mediator, Repository
 
 Persistência: MongoDB
 

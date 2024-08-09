@@ -8,9 +8,11 @@ Plataforma: .NET
 
 Conceitos: Clean Arch, DDD, SOLID
 
-Desgin Patterns: Mediator, Singleton, Transient
+Desgin Patterns: Mediator, Repository
 
-Persistência: MongoDB
+Persistência de dados: MongoDB
+
+Persistência de imagens: AWS S3
 
 Mensageria: KAFKA
 

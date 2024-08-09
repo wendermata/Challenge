@@ -31,7 +31,7 @@ namespace Application.UseCases.Messages.PersistKafkaMessage
                 var message = request.MapToDomain();
 
                 await _repository.InsertAsync(request.MapToDomain(), cancellationToken);
-                _logger.LogError($"Successfully inserted: {SerializeHelper.SerializeObjectToJson(request)}");
+                _logger.LogInformation($"Successfully inserted: {SerializeHelper.SerializeObjectToJson(request)}");
 
                 return output;
             }
